@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Nav() {
   return (
     <div>
@@ -47,25 +49,12 @@ function Nav() {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+          <li><Link>HOME</Link></li>
+          <li><Link>CONTACK US</Link></li>
+          <li><Link>DASHBOARD</Link></li>
+          <li><Link to="/ourmenu">OUR MENU</Link></li>
+          <li><Link to="/ourshope">OUR SHOPE</Link></li>
+          <li><Link>SIGN OUT</Link></li>
           </ul>
         </div>
         <div className="navbar-end">
