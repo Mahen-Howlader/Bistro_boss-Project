@@ -32,54 +32,43 @@ function Ourmenu() {
           subHeading="Don't Miss"
         ></Sectiontitle>
         {/* <Menucategory item={desserts}></Menucategory> */}
+        {/* // desserts */}
         <Menucategory
           img={dessertsImage}
           item={desserts}
-          title="Desserts"
+          title="desserts"
         ></Menucategory>
         <Sectiontitle
           heading="Today's Offer"
           subHeading="Don't Miss"
         ></Sectiontitle>
-        <Menucategory img={soupimg} item={soup} title="Desserts"></Menucategory>
+        {/* Pizza */}
+        <Menucategory img={soupimg} item={soup} title="pizza"></Menucategory>
         <Sectiontitle
           heading="Today's Offer"
           subHeading="Don't Miss"
         ></Sectiontitle>
+        {/* Salads */}
         <Menucategory
           img={saladimg}
           item={salad}
-          title="Desserts"
+          title="salads"
         ></Menucategory>
         <Sectiontitle
           heading="Today's Offer"
           subHeading="Don't Miss"
         ></Sectiontitle>
+        {/* Soups */}
         <Menucategory
           img={pizzaimg}
           item={pizza}
-          title="Desserts"
+          title="soups"
         ></Menucategory>
         <Sectiontitle
           heading="Today's Offer"
           subHeading="Don't Miss"
         ></Sectiontitle>
-        <Menucategory
-          img={dessertsImage}
-          item={offered}
-          title="Desserts"
-        ></Menucategory>
 
-        {/* 
-        <Popularmenu></Popularmenu>
-        <Cover img={coverImg} title={"Our menu"}></Cover>
-        <Popularmenu></Popularmenu>
-        <Cover img={coverImg} title={"Our menu"}></Cover>
-        <Popularmenu></Popularmenu>
-        <Cover img={coverImg} title={"Our menu"}></Cover>
-        <Popularmenu></Popularmenu>
-        <Cover img={coverImg} title={"Our menu"}></Cover>
-        <Popularmenu></Popularmenu> */}
       </div>
     </div>
   );

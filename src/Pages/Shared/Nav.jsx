@@ -54,6 +54,7 @@ function Nav() {
           <li><Link>DASHBOARD</Link></li>
           <li><Link to="/ourmenu">OUR MENU</Link></li>
           <li><Link to="/ourshope">OUR SHOPE</Link></li>
+          <li><Link to="/login">Log in</Link></li>
           <li><Link>SIGN OUT</Link></li>
           </ul>
         </div>

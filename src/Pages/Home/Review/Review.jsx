@@ -16,12 +16,12 @@ function Review() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("reviews.json")
+    fetch("http://localhost:5000/review")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
 
-  console.log(data);
+  // console.log(data);
   return (
     <div className="">
       <Sectiontitle
