@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import Useprovider from "../../Providers/Useprovider";
 
 function Nav() {
+  const { user,logOut } = Useprovider();
+console.log(user)
+  function Logouthandel(){
+    logOut()
+  }
+
+  // console.log(user);
   return (
     <div>
       <div className="navbar fixed z-50 bg-black bg-opacity-20 text-white container">
@@ -49,13 +57,30 @@ function Nav() {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-          <li><Link>HOME</Link></li>
-          <li><Link>CONTACK US</Link></li>
-          <li><Link>DASHBOARD</Link></li>
-          <li><Link to="/ourmenu">OUR MENU</Link></li>
-          <li><Link to="/ourshope">OUR SHOPE</Link></li>
-          <li><Link to="/login">Log in</Link></li>
-          <li><Link>SIGN OUT</Link></li>
+            <li>
+              <Link>HOME</Link>
+            </li>
+            <li>
+              <Link>CONTACK US</Link>
+            </li>
+            <li>
+              <Link>DASHBOARD</Link>
+            </li>
+            <li>
+              <Link to="/ourmenu">OUR MENU</Link>
+            </li>
+            <li>
+              <Link to="/ourshope">OUR SHOPE</Link>
+            </li>
+           
+           {user ?  <li>
+              <Link onClick={Logouthandel}>LOG OUT</Link>
+            </li> 
+              : 
+              <li>
+              <Link to="/login">Log in</Link>
+            </li>
+          }
           </ul>
         </div>
         <div className="navbar-end">

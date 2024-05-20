@@ -1,21 +1,42 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import Useprovider from "../../Providers/Useprovider";
+import Swal from "sweetalert2";
 function Login() {
+  const location = useLocation();
+  const navigate = useNavigate()
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
-
+  const { signinUser, user } = Useprovider();
+  console.log(location.state);
 
   function handelForm(e) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+    signinUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(location.state || "/")
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
   const capchaRef = useRef(null);
 
@@ -50,7 +71,6 @@ function Login() {
                   <input
                     type="email"
                     name="email"
-                    id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     required
@@ -79,18 +99,15 @@ function Login() {
                     </div>
                     <div className="w-full mt-5">
                       <input
+                        onBlur={handelCaptchavalid}
                         type="text"
                         name="captcha"
-                        id="email"
                         ref={capchaRef}
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Type the text above"
                         required
                       />
                     </div>
-                    <button className="btn w-full mt-3" onClick={handelCaptchavalid}>
-                      VALID CODE
-                    </button>
                   </div>
                 </div>
 
@@ -103,7 +120,10 @@ function Login() {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
-                  <Link to="/register"  className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                  <Link
+                    to="/register"
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
                     Sign up
                   </Link>
                 </p>

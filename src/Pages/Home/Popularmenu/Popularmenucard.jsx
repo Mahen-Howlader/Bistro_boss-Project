@@ -1,5 +1,5 @@
 function Popularmenucard({ data }) {
-  console.log(data);
+  // console.log(data);
   const { image, price, category, recipe, name } = data || {};
   return (
     <div>

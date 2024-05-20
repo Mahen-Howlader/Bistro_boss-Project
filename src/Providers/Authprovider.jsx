@@ -1,26 +1,39 @@
 import app from "../Firebase/Firebase";
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+
 export const AuthContext = createContext(null);
 function Authprovider({ children }) {
+
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const signinUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const profileUpdate = (name,photo) =>{
+  return  updateProfile(auth.currentUser, {
+      displayName: name,  photoURL: photo
+    })
+  }
 
-    const createUser = (email, password) => {
-        setLoading(false)
-      return  createUserWithEmailAndPassword(auth, email, password)
-    }
-    const signinUser = (email, password) => {
-        setLoading(false)
-      return  signInWithEmailAndPassword(auth, email, password)
-    }
-
-    const logOut = (email, password) => {
-        setLoading(false)
-        return signOut(auth)
-    }
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -32,8 +45,10 @@ function Authprovider({ children }) {
     };
   }, []);
 
-  const authInfo = { user, loading,createUser ,signinUser,logOut};
-  return <AuthContext value={authInfo}>{children}</AuthContext>;
+  const authInfo = { user, loading, createUser, signinUser, logOut,profileUpdate };
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 }
 
 export default Authprovider;
