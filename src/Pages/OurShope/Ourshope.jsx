@@ -8,14 +8,12 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 function Ourshope() {
-  const categorys = ["salads","pizza","soups", "dessert",'drinks']
-  const {category} = useParams()
-  const initialIndex = categorys.indexOf(category)
+  const categorys = ["salads", "pizza", "soups", "dessert", "drinks"];
+  const { category } = useParams();
+  const initialIndex = categorys.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialIndex);
   const [menu] = Usemenu();
 
-
- 
   const desserts = menu.filter((val) => val.category === "dessert");
   const soup = menu.filter((val) => val.category === "soup");
   const salad = menu.filter((val) => val.category === "salad");
@@ -23,12 +21,11 @@ function Ourshope() {
   const offered = menu.filter((val) => val.category === "offered");
   const drinks = menu.filter((val) => val.category === "drinks");
 
-
   return (
     <div>
       <Cover img={orderCover} title={"Our Shope"}></Cover>
       <div className="my-10">
-      <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>SALAT</Tab>
             <Tab>PIZZA</Tab>
@@ -87,7 +84,6 @@ function Ourshope() {
               ))}
             </div>
           </TabPanel>
-        
         </Tabs>
       </div>
     </div>

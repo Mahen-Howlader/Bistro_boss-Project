@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import Useprovider from "../../Providers/Useprovider";
-
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../Providers/useCart";
 function Nav() {
-  const { user,logOut } = Useprovider();
-console.log(user)
-  function Logouthandel(){
-    logOut()
+  const { user, logOut } = Useprovider();
+  console.log(user);
+  function Logouthandel() {
+    logOut();
   }
-
+const [cart] = useCart()
   // console.log(user);
   return (
     <div>
@@ -56,7 +57,7 @@ console.log(user)
           <a className="btn btn-ghost text-2xl">BISTRO BOSS</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu items-center menu-horizontal px-1">
             <li>
               <Link>HOME</Link>
             </li>
@@ -72,15 +73,25 @@ console.log(user)
             <li>
               <Link to="/ourshope">OUR SHOPE</Link>
             </li>
-           
-           {user ?  <li>
-              <Link onClick={Logouthandel}>LOG OUT</Link>
-            </li> 
-              : 
-              <li>
-              <Link to="/login">Log in</Link>
+            <li>
+              <Link to="/dashboard/cart">
+                <button className="btn">
+                  {cart.length}
+                  <FaCartShopping />
+                </button>
+              </Link>
             </li>
-          }
+
+
+            {user ? (
+              <li>
+                <Link onClick={Logouthandel}>LOG OUT</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/login">Log in</Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
