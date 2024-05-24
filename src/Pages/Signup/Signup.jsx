@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Useprovider from "../../Providers/Useprovider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Socialgooglelogin from "../../Component/Sectiontitle/Socialgooglelogin";
 function Signup() {
   const { user, createUser, profileUpdate } = Useprovider() || {};
-
-  console.log(user);
+  const axiosPublic = useAxiosPublic();
+  // console.log(user);
 
   const {
     register,
@@ -20,9 +22,17 @@ function Signup() {
       .then((result) => {
         console.log(result.user);
         profileUpdate(data.name, data.photoURL).then((res) => {
-          console.log("user profile updated");
-          Swal.fire("SweetAlert2 is working!");
-          reset();
+          const users = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", users).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added");
+              Swal.fire("SweetAlert2 is working!");
+              reset();
+            }
+          });
         });
       })
       .catch((error) => {
@@ -163,6 +173,7 @@ function Signup() {
                   </Link>
                 </p>
               </form>
+                <Socialgooglelogin></Socialgooglelogin>
             </div>
           </div>
         </div>

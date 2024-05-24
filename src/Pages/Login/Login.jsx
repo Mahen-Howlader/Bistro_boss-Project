@@ -7,6 +7,7 @@ import {
 } from "react-simple-captcha";
 import Useprovider from "../../Providers/Useprovider";
 import Swal from "sweetalert2";
+import Socialgooglelogin from "../../Component/Sectiontitle/Socialgooglelogin";
 function Login() {
   const location = useLocation();
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ function Login() {
     loadCaptchaEnginge(6);
   }, []);
   const { signinUser, user } = Useprovider();
-  console.log(location.state);
+  // console.log(location.state);
 
   function handelForm(e) {
     e.preventDefault();
@@ -128,6 +129,7 @@ function Login() {
                   </Link>
                 </p>
               </form>
+                <Socialgooglelogin></Socialgooglelogin>
             </div>
           </div>
         </div>

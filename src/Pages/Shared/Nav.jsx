@@ -4,12 +4,12 @@ import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../Providers/useCart";
 function Nav() {
   const { user, logOut } = Useprovider();
-  console.log(user);
   function Logouthandel() {
     logOut();
   }
-const [cart] = useCart()
-  // console.log(user);
+
+  const [cart] = useCart();
+  
   return (
     <div>
       <div className="navbar fixed z-50 bg-black bg-opacity-20 text-white container">
@@ -81,7 +81,6 @@ const [cart] = useCart()
                 </button>
               </Link>
             </li>
-
 
             {user ? (
               <li>

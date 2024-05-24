@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
     children : [
       {
           path : "cart",
-          element : <Cart></Cart>
+          element : <Privateroute><Cart></Cart></Privateroute>
       }
     ]
   }

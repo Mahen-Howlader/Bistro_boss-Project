@@ -5,6 +5,7 @@ function Dashboard() {
     <div className="flex  container mx-auto">
       <div className="w-64 min-h-screen bg-orange-500">
         <ul className="menu space-y-5">
+          {/* all user  */}
           <li>
             <NavLink to="/dashboard/userhome">User Home</NavLink>
         
@@ -27,6 +28,9 @@ function Dashboard() {
           <li>
             <NavLink to="/dashboard/cart">My Booking</NavLink>
           </li>
+
+      {/* admin  */}
+
           <div className="divider"></div>
           <li>
             <NavLink to="/dashboard/home">Home</NavLink>
