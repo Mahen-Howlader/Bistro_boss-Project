@@ -9,6 +9,7 @@ import Privateroute from "./Privateroute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
 import Alluser from "../Pages/Dashboard/AllUsers/Alluser";
+import Adminhome from "../Pages/Dashboard/Admin home/Adminhome";
 
 export const router = createBrowserRouter([
   {
@@ -25,11 +26,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ourshope",
-        element: <Privateroute> <Ourshope></Ourshope></Privateroute>,
+        element: (
+          <Privateroute>
+            {" "}
+            <Ourshope></Ourshope>
+          </Privateroute>
+        ),
       },
       {
         path: "/ourshope/:category",
-        element: <Privateroute> <Ourshope></Ourshope></Privateroute>,
+        element: (
+          <Privateroute>
+            {" "}
+            <Ourshope></Ourshope>
+          </Privateroute>
+        ),
       },
       {
         path: "/login",
@@ -42,19 +53,30 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path : "dashboard",
-    element : <Dashboard></Dashboard>,
-    children : [
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
       // admin
       {
-        path : "allusers",
-        element : <Alluser></Alluser>
+        path: "allusers",
+        element: <Alluser></Alluser>,
       },
       {
-          path : "cart",
-          element : <Privateroute><Cart></Cart></Privateroute>
-      }
-
-    ]
-  }
+        path: "cart",
+        element: (
+          <Privateroute>
+            <Cart></Cart>
+          </Privateroute>
+        ),
+      },
+      {
+        path: "adminhome",
+        element: (
+          <Privateroute>
+            <Adminhome></Adminhome>
+          </Privateroute>
+        ),
+      },
+    ],
+  },
 ]);
