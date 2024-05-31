@@ -69,7 +69,7 @@ function Alluser() {
           </thead>
           <tbody>
             {/* row 1 */}
-            {users.map((item, index) => {
+            {users?.map((item, index) => {
               return (
                 <tr key={item._id}>
                   <th>{index + 1}</th>

@@ -24,8 +24,9 @@ function useAxiosSecure() {
       return response;
     },
    async function (error) {
-      console.log("status error in the interce", error);
+      // console.log("status error in the interce", error);
       const status = error.response.status;
+      console.log("status error in the enterceptor", status)
       if (status === 401 || status === 403) {
        await logOut();
         navigate("/login");
