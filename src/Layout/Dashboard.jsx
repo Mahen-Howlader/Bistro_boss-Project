@@ -15,13 +15,13 @@ function Dashboard() {
               <NavLink to="/dashboard/adminhome">Admin Home</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/vation">Reser Vation</NavLink>
+              <NavLink to="/dashboard/additem">Add Item</NavLink>
             </li>
             <li>
               <NavLink to="/dashboard/payment">Payment History</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/manageitem">Manage Item</NavLink>
+              <NavLink to="/dashboard/manageItme">Manage Item</NavLink>
             </li>
             <li>
               <NavLink to="/dashboard/booking">Manage Booking</NavLink>
