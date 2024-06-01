@@ -13,6 +13,7 @@ function useAdmin() {
       // console.log(res.data)
       return res.data.admin;
     },
+    enabled : !!user?.email
   });
   return [isAdmin, isAdminLoading];
 }
