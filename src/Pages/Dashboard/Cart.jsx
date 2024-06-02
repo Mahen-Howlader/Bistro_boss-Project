@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useCart from "../../Providers/useCart";
 import useAxiosSecure from "../../Providers/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const [cart, refetch] = useCart();
@@ -18,7 +19,7 @@ function Cart() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/cart${id}`).then((res) => {
+        axiosSecure.delete(`/cart/${id}`).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",
@@ -31,13 +32,19 @@ function Cart() {
       }
     });
   }
-  console.log(cart);
+  // console.log(cart);
   return (
     <div className="bg-teal-500">
       <div className="flex py-3 px-2 justify-between">
         <h3 className="text-xl">Total order : {cart?.length || 0}</h3>
         <h3 className="text-xl">Total price: {total || 0}</h3>
-        <button className="btn">Pay</button>
+        {cart?.length ? (
+          <Link to="/dashboard/payment">
+            <button >Pay</button>
+          </Link>
+        ) : (
+          <button disabled>Pay</button>
+        )}
       </div>
       <div>
         <div className="overflow-x-auto">

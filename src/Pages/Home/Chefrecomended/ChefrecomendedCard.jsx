@@ -21,6 +21,7 @@ function ChefrecomendedCard({ data }) {
         image,
         price,
       };
+      console.log(cartsInfo)
       axios.post("http://localhost:5000/carts", cartsInfo).then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -30,7 +31,6 @@ function ChefrecomendedCard({ data }) {
             showConfirmButton: false,
             timer: 1500,
           });
-          refetch()
         }
       });
     } else {
