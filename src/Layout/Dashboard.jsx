@@ -1,8 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Providers/useAdmin";
+import useCart from "../Providers/useCart";
 
 function Dashboard() {
   const [isAdmin] = useAdmin();
+  const [cart] = useCart()
   // const
   return (
     <div className="flex  container mx-auto">
@@ -12,13 +14,16 @@ function Dashboard() {
           <>
             {" "}
             <li>
-              <NavLink to="/dashboard/adminhome">Admin Home</NavLink>
+              <NavLink to="/dashboard/adminhome">User Home</NavLink>
             </li>
             <li>
               <NavLink to="/dashboard/additem">Add Item</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/payment">Payment History</NavLink>
+              <NavLink to="/dashboard/cart">MY Cart {cart.length}</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/history">Payment History</NavLink>
             </li>
             <li>
               <NavLink to="/dashboard/manageItme">Manage Item</NavLink>
@@ -28,6 +33,9 @@ function Dashboard() {
             </li>
             <li>
               <NavLink to="/dashboard/allusers">All User</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/paymenthistory">Payment Real History</NavLink>
             </li>
           </>
 
